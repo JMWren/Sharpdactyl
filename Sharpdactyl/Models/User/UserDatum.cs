@@ -3,8 +3,10 @@ using System;
 
 namespace Sharpdactyl.Models.User
 {
+    /// <summary>Represents the user data</summary>
     public class UserDatum
     {
+        /// <summary>Attributes</summary>
         [JsonProperty("attributes", Required = Required.Always)]
         public Attributes Attributes
         {
@@ -13,8 +15,10 @@ namespace Sharpdactyl.Models.User
         }
     }
 
+    /// <summary>Represents the user attributes</summary>
     public class Attributes
     {
+        /// <summary>The user id</summary>
         [JsonProperty("id", Required = Required.Always)]
         public long Id
         {
@@ -22,6 +26,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The external id</summary>
         [JsonProperty("external_id", Required = Required.AllowNull)]
         public object ExternalId
         {
@@ -29,6 +34,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The uuid</summary>
         [JsonProperty("uuid", Required = Required.Always)]
         public Guid Uuid
         {
@@ -36,6 +42,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The username</summary>
         [JsonProperty("username", Required = Required.Always)]
         public string Username
         {
@@ -43,6 +50,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The email</summary>
         [JsonProperty("email", Required = Required.Always)]
         public string Email
         {
@@ -50,6 +58,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The first name</summary>
         [JsonProperty("first_name", Required = Required.Always)]
         public string FirstName
         {
@@ -57,6 +66,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The last name</summary>
         [JsonProperty("last_name", Required = Required.Always)]
         public string LastName
         {
@@ -64,6 +74,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The language</summary>
         [JsonProperty("language", Required = Required.Always)]
         public string Language
         {
@@ -71,6 +82,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>Is Admin</summary>
         [JsonProperty("root_admin", Required = Required.Always)]
         public bool RootAdmin
         {
@@ -78,6 +90,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The 2fa status</summary>
         [JsonProperty("2fa", Required = Required.Always)]
         public bool The2Fa
         {
@@ -85,6 +98,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The created on date</summary>
         [JsonProperty("created_at", Required = Required.Always)]
         public DateTimeOffset CreatedAt
         {
@@ -92,6 +106,7 @@ namespace Sharpdactyl.Models.User
             set;
         }
 
+        /// <summary>The update on date</summary>
         [JsonProperty("updated_at", Required = Required.Always)]
         public DateTimeOffset UpdatedAt
         {

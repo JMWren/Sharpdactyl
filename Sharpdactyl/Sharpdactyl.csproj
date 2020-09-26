@@ -4,7 +4,7 @@
     <PackageId>SharpDactyl</PackageId>
     <Title>SharpDactyl</Title>
     <Authors>JayJay1989BE</Authors>
-    <Version>0.0.4-alpha</Version>
+    <Version>0.0.1-alpha</Version>
     <PackageTags>Library</PackageTags>
     <Description>API library for the Pterodactyl game panel</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
