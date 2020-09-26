@@ -9,9 +9,9 @@
 
 ### Installation
 #### Nuget
-Dowload from [nuget](https://nuget.org/)
-or with Package Manager
-`Install-Package SharpDactyl`
+Dowload from [nuget](https://www.nuget.org/packages/SharpDactyl)
+
+or with Package Manager: `Install-Package SharpDactyl`
 
 ### Api Docs
 Please visit the api docs [here (Getting Started)](https://github.com/JayJay1989/Sharpdactyl/blob/master/API%20Docs/Getting%20started.md)
