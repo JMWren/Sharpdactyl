@@ -1,4 +1,4 @@
-# API Wrapper - Sharpdactyl
+# API Wrapper for Sharpdactyl
 
 ## Initatilzing the API
 C# Code

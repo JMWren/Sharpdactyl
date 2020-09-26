@@ -435,7 +435,7 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task Admin_DeleteServerById(string id)
         {
-            await Admin_DeleteServerById(id, false);
+            await Admin_DeleteServerById(id, false).ConfigureAwait(false);
         }
         #endregion
     }
