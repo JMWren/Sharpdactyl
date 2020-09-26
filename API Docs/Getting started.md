@@ -3,7 +3,7 @@
 ## Initatilzing the API
 C# Code
 ```csharp
-PClient client = new PClient("hostName", "meowmeowmeow");
+Sharpdactyl sharpdactyl = new Sharpdactyl("hostName", "meowmeowmeow");
 ```
 
 ## Datum Types
