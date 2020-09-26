@@ -1,4 +1,7 @@
 ## Client Methods
+
+All methods are async, if you don't want to use async, add a `.Result` behind the method.
+
 ### Get Client Servers
 `PCient.GetServers();`
 Returns
@@ -6,7 +9,8 @@ Returns
 Example
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-foreach (ServerDatum srv in client.GetServers())
+var result = await client.GetServers();
+foreach (ServerDatum srv in result)
 {
     Console.WriteLine(srv.Attributes.Name + @ + srv.Attributes.Identifer);
 }
@@ -22,7 +26,7 @@ Returns
 Example
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-ServerDatum srv = client.GetServerById(32e74e55);
+ServerDatum srv = await client.GetServerById("32e74e55");
 Console.WriteLine(srv.Attributes.Name + @ + srv.Attributes.Identifer);
 ```
 Output
@@ -36,8 +40,8 @@ Returns
 Example
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-ServerDatum srv = client.GetServerById(32e74e55);
-ServerUtil srvU = client.GetServerUsage(srv.Attributes.Identifer);
+ServerDatum srv = await client.GetServerById("32e74e55");
+ServerUtil srvU = await client.GetServerUsage(srv.Attributes.Identifer);
 Console.WriteLine(srvU.Attributes.Memory.Current +  MB Usage);
 ```
 Output
@@ -51,10 +55,8 @@ Returns
 Example
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-if (client.SendSignal(32e74e55, PowerSettings.start))
-    Console.WriteLine(Signal Sent!);
-else
-    Console.WriteLine(Failed to send!);
+var result = await client.SendSignal("32e74e55", PowerSettings.start);
+Console.WriteLine(result ? "Signal Sent!" : "Failed to send!");
 ```
 ### Post a CMD Command
 `PClient.PostCMDCommand(string ServerId, string command);`
@@ -62,8 +64,6 @@ Returns
 `bool`
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-if (client.PostCMDCommand(32e74e55, say Hello!))
-    Console.WriteLine(Command Sent!);
-else
-    Console.WriteLine(Command failed to send!);
+var result = await client.PostCMDCommand("32e74e55", "say Hello!");
+Console.WriteLine(result ? "Command Sent!" : "Command Sent!");
 ```

@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sharpdactyl.Models.User
 {
-    public partial class UserDatum
+    public class UserDatum
     {
         [JsonProperty("attributes", Required = Required.Always)]
         public Attributes Attributes

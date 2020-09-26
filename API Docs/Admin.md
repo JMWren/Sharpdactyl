@@ -1,5 +1,7 @@
 # Application/Adminstration API
 
+All methods are async, if you don't want to use async, add a `.Result` behind the method.
+
 ## Methods
 ### Get Users
 `PClient.Admin_GetUsers();`
@@ -8,7 +10,8 @@ Returns
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-foreach (ServerDatum usr in client.Admin_GetUsers())
+var result = await client.Admin_GetUsers():
+foreach (ServerDatum usr in result)
 {
     Console.WriteLine(usr.Attributes.FirstName);
 }
@@ -24,7 +27,8 @@ Returns:
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-Console.WriteLine(client.Admin_GetUserByExternalId("1").Attributes.FirstName);
+var result = await client.Admin_GetUserByExternalId("1");
+Console.WriteLine(result.Attributes.FirstName);
 ```
 Output
 ```
@@ -37,7 +41,7 @@ Returns:
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-UserDatum usr = client.Admin_CreateUser("JohnNumber2","john@yahooi.com", "John2", "Kol", "VerySecurePassword!");
+UserDatum usr = await client.Admin_CreateUser("JohnNumber2","john@yahooi.com", "John2", "Kol", "VerySecurePassword!");
 Console.WriteLine(usr.Attributes.FirstName);
 ```
 Output
@@ -51,7 +55,7 @@ Returns:
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-UserDatum usr = client.Admin_EditUser("2", "JohnNumber2","john@yahooi.com", "John3", "Kol", "VerySecurePassword!");
+UserDatum usr = await client.Admin_EditUser("2", "JohnNumber2","john@yahooi.com", "John3", "Kol", "VerySecurePassword!");
 Console.WriteLine(usr.Attributes.FirstName);
 ```
 Output
@@ -63,7 +67,7 @@ John3
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-client.Admin_DeleteUser("2");
+await client.Admin_DeleteUser("2");
 ```
 ### Get Nodes
 `PClient.Admin_GetNodes();`
@@ -72,7 +76,7 @@ Returns:
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-List<NodeDatum> nodes = client.Admin_GetNodes();
+List<NodeDatum> nodes = await client.Admin_GetNodes();
 ```
 ### Get Node by ID
 `PClient.Admin_GetNodeById(string id);`
@@ -81,7 +85,7 @@ Returns:
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-NodeDatum node = client.Admin_GetNodeById("1");
+NodeDatum node = await client.Admin_GetNodeById("1");
 Console.WriteLine(node.Attributes.Name);
 ```
 Output:
@@ -95,7 +99,8 @@ Returns:
 Example
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-foreach (ServerDatum srv in client.Admin_GetServers())
+var result = await client.Admin_GetServers();
+foreach (ServerDatum srv in result)
 {
     Console.WriteLine(srv.Attributes.Name + @ + srv.Attributes.Identifer);
 }
@@ -113,7 +118,7 @@ Returns:
 Example:
 ```csharp
 PClient client = new PClient(hostName, meowmeowmeow);
-ServerDatum srv = client.Admin_GetServerById("32e74e55");
+ServerDatum srv = await client.Admin_GetServerById("32e74e55");
 Console.WriteLine(srv.Attributes.Name + @ + srv.Attributes.Identifer);
 ```
 Output
@@ -130,7 +135,7 @@ srva.Attributes.Description = "A new server!";
 srva.Attributes.feature_limits = new FeatureLimits() { Allocations = 0, Databases = 0 };
 srva.Attributes.Limits = new Limits() { Cpu = 200, Disk = 2000, Io = 56, Memory = 2048 };
 srva.Attributes.Name = "New Server!";
-client.Admin_CreateServer(srva);
+await client.Admin_CreateServer(srva);
 ```
 ### Ban, Reinstall, Rebuild, Unban, and delete servers
 `PClient.Admin_BanServerById(string id);`
