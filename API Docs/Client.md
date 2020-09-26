@@ -16,7 +16,7 @@ foreach (ServerDatum srv in result)
 }
 ```
 Output
-```
+```bash
 Server #1@32e74e55
 ```
 ### Get server by ID
@@ -30,7 +30,7 @@ ServerDatum srv = await client.GetServerById("32e74e55");
 Console.WriteLine(srv.Attributes.Name + @ + srv.Attributes.Identifer);
 ```
 Output
-```
+```bash
 Server #1@32e74e55
 ```
 ### Get Server Usage
@@ -45,7 +45,7 @@ ServerUtil srvU = await client.GetServerUsage(srv.Attributes.Identifer);
 Console.WriteLine(srvU.Attributes.Memory.Current +  MB Usage);
 ```
 Output
-```
+```bash
 2048 MB Usage
 ```
 ### Sending singals to servers

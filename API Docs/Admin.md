@@ -17,7 +17,7 @@ foreach (ServerDatum usr in result)
 }
 ```
 Output
-```
+```bash
 John
 ```
 ### Get user by ID
@@ -31,7 +31,7 @@ var result = await client.Admin_GetUserByExternalId("1");
 Console.WriteLine(result.Attributes.FirstName);
 ```
 Output
-```
+```bash
 John
 ```
 ### Create User
@@ -45,7 +45,7 @@ UserDatum usr = await client.Admin_CreateUser("JohnNumber2","john@yahooi.com", "
 Console.WriteLine(usr.Attributes.FirstName);
 ```
 Output
-```
+```bash
 John2
 ```
 ### Edit User
@@ -59,7 +59,7 @@ UserDatum usr = await client.Admin_EditUser("2", "JohnNumber2","john@yahooi.com"
 Console.WriteLine(usr.Attributes.FirstName);
 ```
 Output
-```
+```bash
 John3
 ```
 ### Delete User
@@ -89,7 +89,7 @@ NodeDatum node = await client.Admin_GetNodeById("1");
 Console.WriteLine(node.Attributes.Name);
 ```
 Output:
-```
+```bash
 US-1
 ```
 ### Get all servers
@@ -106,7 +106,7 @@ foreach (ServerDatum srv in result)
 }
 ```
 Output
-```
+```bash
 Server #1@32e74e55
 Private admin server@e342b218
 ```
@@ -122,7 +122,7 @@ ServerDatum srv = await client.Admin_GetServerById("32e74e55");
 Console.WriteLine(srv.Attributes.Name + @ + srv.Attributes.Identifer);
 ```
 Output
-```
+```bash
 Server #1@32e74e55
 ```
 ### Create a server

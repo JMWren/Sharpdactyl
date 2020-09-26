@@ -156,7 +156,13 @@ namespace Sharpdactyl.Interfaces
         /// <param name="id">the server id</param>
         /// <returns></returns>
         Task Admin_RebuildServerById(string id);
-
+        
+        /// <summary>
+        /// Delete server
+        /// </summary>
+        /// <param name="id">the server</param>
+        /// <returns></returns>
+        Task Admin_DeleteServerById(string id);
 
         /// <summary>
         /// Delete server
@@ -164,8 +170,8 @@ namespace Sharpdactyl.Interfaces
         /// <param name="id">the server</param>
         /// <param name="force">force remove</param>
         /// <returns></returns>
-        Task Admin_DeleteServerById(string id, bool force = false);
-
+        /// 
+        Task Admin_DeleteServerById(string id, bool force);
         #endregion
     }
 }

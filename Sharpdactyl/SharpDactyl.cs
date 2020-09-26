@@ -21,7 +21,7 @@ namespace Sharpdactyl
     public class SharpDactyl : ISharpDactyl
     {
         private const string MissingCredentials = "Hostname and/or apikey is not provided!";
-        private readonly WebHelper _web = null;
+        private readonly WebHelper _web;
 
         /// <summary>
         /// Constructor for a client that interface's with Pterodactyl game panel system.
@@ -41,7 +41,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<List<ServerDatum>> GetServers()
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -60,7 +63,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<ServerDatum> GetServerById(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -78,7 +84,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<ServerUtil> GetServerUsage(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -97,13 +106,13 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<bool> SendSignal(string serverId, PowerSettings signal)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
-            var data = new NameValueCollection {["signal"] = signal.ToString()};
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
+            var data = new NameValueCollection { ["signal"] = signal.ToString() };
             var result = await _web.Post($"client/servers/{serverId}/power", data);
-            if (!string.IsNullOrEmpty(result))
-                return false;
-            else
-                return true;
+            return string.IsNullOrEmpty(result);
         }
 
         /// <summary>
@@ -115,13 +124,13 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<bool> PostConsoleCommand(string serverId, string command)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
-            var data = new NameValueCollection {["command"] = command};
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
+            var data = new NameValueCollection { ["command"] = command };
             var result = await _web.Post($"client/servers/{serverId}/command", data);
-            if (!string.IsNullOrEmpty(result))
-                return false;
-            else
-                return true;
+            return string.IsNullOrEmpty(result);
         }
         #endregion
 
@@ -134,7 +143,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<List<UserDatum>> Admin_GetUsers()
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -153,7 +165,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<UserDatum> Admin_GetUserByExternalId(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -175,7 +190,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<UserDatum> Admin_CreateUser(string username, string email, string first, string last, string password)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var data = new NameValueCollection
             {
                 ["username"] = username,
@@ -201,7 +219,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<UserDatum> Admin_EditUser(string userId, string username, string email, string first, string last, string password)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var data = new NameValueCollection
             {
                 ["username"] = username,
@@ -222,7 +243,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task Admin_DeleteUser(string userId)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             await _web.Delete($"application/users/{userId}");
         }
 
@@ -233,7 +257,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<List<NodeDatum>> Admin_GetNodes()
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -252,7 +279,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<NodeDatum> Admin_GetNodeById(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -269,7 +299,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<List<ServerDatum>> Admin_GetServers()
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -288,7 +321,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<ServerDatum> Admin_GetServerById(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var settings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
@@ -306,10 +342,13 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task<ServerDatum> Admin_CreateServer(ServerDatum srva)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             var data = JsonConvert.SerializeObject(srva.Attributes);
             var result = await _web.PostJSON("application/servers/", data);
-            return JsonConvert.DeserializeObject<ServerDatum>(result); 
+            return JsonConvert.DeserializeObject<ServerDatum>(result);
         }
 
         /// <summary>
@@ -320,7 +359,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task Admin_SuspendServerById(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             await _web.Post($"application/servers/{id}/suspend", null);
         }
 
@@ -332,7 +374,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task Admin_UnSuspendServerById(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             await _web.Post($"application/servers/{id}/unsuspend", null);
         }
 
@@ -344,7 +389,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task Admin_ReinstallServerById(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             await _web.Post($"application/servers/{id}/reinstall", null);
         }
 
@@ -356,7 +404,10 @@ namespace Sharpdactyl
         /// <exception cref="MissingCredentialsException"></exception>
         public async Task Admin_RebuildServerById(string id)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             await _web.Post($"application/servers/{id}/rebuild", null);
         }
 
@@ -367,12 +418,25 @@ namespace Sharpdactyl
         /// <param name="force">force remove</param>
         /// <returns></returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task Admin_DeleteServerById(string id, bool force = false)
+        public async Task Admin_DeleteServerById(string id, bool force)
         {
-            if (_web == null) throw new MissingCredentialsException(MissingCredentials);
+            if (_web == null)
+            {
+                throw new MissingCredentialsException(MissingCredentials);
+            }
             await _web.Delete(force ? $"application/servers/{id}/force" : $"application/servers/{id}");
         }
 
+        /// <summary>
+        /// Delete server
+        /// </summary>
+        /// <param name="id">the server</param>
+        /// <returns></returns>
+        /// <exception cref="MissingCredentialsException"></exception>
+        public async Task Admin_DeleteServerById(string id)
+        {
+            await Admin_DeleteServerById(id, false);
+        }
         #endregion
     }
 }
