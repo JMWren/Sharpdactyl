@@ -10,4 +10,4 @@ or with Package Manager
 `Install-Package SharpDactyl`
 
 # Api Docs
-Please visit the api docs [here (Getting Started)](https://github.com/KadePcGames/Sharpdactyl/blob/master/API%20Docs/Getting%20started.md)
+Please visit the api docs [here (Getting Started)](https://github.com/JayJay1989/Sharpdactyl/blob/master/API%20Docs/Getting%20started.md)
