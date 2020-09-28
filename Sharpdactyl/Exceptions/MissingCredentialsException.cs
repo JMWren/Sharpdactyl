@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sharpdactyl.Exceptions
+namespace SharpdactylLib.Exceptions
 {
     /// <summary>
     /// Represents errors that occur during application execution.

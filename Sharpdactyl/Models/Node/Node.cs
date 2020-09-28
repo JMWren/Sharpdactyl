@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Sharpdactyl.Models.Node
+namespace SharpdactylLib.Models.Node
 {
     /// <summary>Represents the node</summary>
     public class Node

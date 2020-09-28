@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Sharpdactyl.Models.Client
+namespace SharpdactylLib.Models.Client
 {
     /// <summary>Represents the hard limits for the server</summary>
     public class Limits
@@ -60,11 +61,23 @@ namespace Sharpdactyl.Models.Client
         [JsonProperty("port_range", Required = Required.Always)]
         public List<string> Port_range {get;set;}
     }
+
+    /// <summary>
+    /// Represents the Attributes
+    /// </summary>
     public class Attributes
+    ///
+    /// , Required = Required.AllowNull
     {
+        /// <summary>The id</summary>
+        [JsonProperty("id")]
+        public long Id { get; set; }
         /// <summary>The external id</summary>
         [JsonProperty("external_id")]
         public string External_Id { get; set; }
+        /// <summary>The uuid</summary>
+        [JsonProperty("uuid")]
+        public Guid Uuid { get; set; }
         /// <summary>The name</summary>
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -117,12 +130,20 @@ namespace Sharpdactyl.Models.Client
         [JsonProperty("start_on_completion")]
         public bool Start_On_Completion { get; set; }
     }
+
+    /// <summary>
+    /// Represent the api return data
+    /// </summary>
     public class ServerDatum
     {
         /// <summary>Attributes</summary>
         [JsonProperty("attributes", Required = Required.Always)]
         public Attributes Attributes { get; set; }
     }
+
+    /// <summary>
+    /// Represent the api return data as a list
+    /// </summary>
     public class Server
     {
         /// <summary>All servers</summary>

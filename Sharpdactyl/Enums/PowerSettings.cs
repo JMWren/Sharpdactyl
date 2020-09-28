@@ -1,4 +1,4 @@
-﻿namespace Sharpdactyl.Enums
+﻿namespace SharpdactylLib.Enums
 {
     /// <summary>
     /// Power commands for pterodactyl

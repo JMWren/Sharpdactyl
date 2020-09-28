@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
 
-namespace Sharpdactyl.Helpers
+namespace SharpdactylLib.Helpers
 {
     /// <summary>
     /// Class represents the web helper for api calls
     /// </summary>
-    internal class WebHelper
+    public class WebHelper
     {
         private readonly string _hostname;
         private readonly string _apiKey;

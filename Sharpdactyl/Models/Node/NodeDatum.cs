@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Sharpdactyl.Models.Node
+namespace SharpdactylLib.Models.Node
 {
     /// <summary>Represents the node Data</summary>
     public class NodeDatum

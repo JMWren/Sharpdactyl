@@ -4,12 +4,20 @@
     <PackageId>SharpDactyl</PackageId>
     <Title>SharpDactyl</Title>
     <Authors>JayJay1989BE</Authors>
-    <Version>0.0.1-alpha</Version>
+    <Version>0.0.2-alpha</Version>
     <PackageTags>Library</PackageTags>
     <Description>API library for the Pterodactyl game panel</Description>
+    <PackageTags>API;Library; Pterodactyl Game Panel;</PackageTags>
+    <PackageReleaseNotes>Version 0.0.2-alpha</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/JayJay1989/Sharpdactyl</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/JayJay1989/Sharpdactyl</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>SharpdactylLib</AssemblyName>
+    <RootNamespace>SharpdactylLib</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
