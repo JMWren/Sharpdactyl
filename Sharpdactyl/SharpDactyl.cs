@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using SharpdactylLib.Enums;
 using SharpdactylLib.Exceptions;
 using SharpdactylLib.Helpers;
-using SharpdactylLib.Interfaces;
 using SharpdactylLib.Models.Client;
 using SharpdactylLib.Models.Node;
 using SharpdactylLib.Models.User;
@@ -15,9 +14,7 @@ namespace SharpdactylLib
 {
     /// <summary>
     /// Class representing interactions with the Pterodactyl game panel
-    /// Implements the <see cref="ISharpDactyl" />
     /// </summary>
-    /// <seealso cref="ISharpDactyl" />
     public class SharpDactyl
     {
         private const string MissingCredentials = "Hostname and/or apikey is not provided!";
