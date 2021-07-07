@@ -6,10 +6,6 @@ namespace SharpdactylLib.Models.Node
     /// <summary>Represents the node Data</summary>
     public class NodeDatum
     {
-        /// <summary>Object</summary>
-        [JsonProperty("object", Required = Required.Always)]
-        public string Object { get; set; }
-
         /// <summary>The attributes</summary>
         [JsonProperty("attributes", Required = Required.Always)]
         public Attributes Attributes { get; set; }
@@ -21,6 +17,10 @@ namespace SharpdactylLib.Models.Node
         /// <summary>The id</summary>
         [JsonProperty("id", Required = Required.Always)]
         public long Id { get; set; }
+
+        /// <summary>The uuid</summary>
+        [JsonProperty("uuid", Required = Required.Always)]
+        public Guid Uuid { get; set; }
 
         /// <summary>Public</summary>
         [JsonProperty("public", Required = Required.Always)]

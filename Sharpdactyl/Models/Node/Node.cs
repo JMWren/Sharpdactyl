@@ -5,10 +5,6 @@ namespace SharpdactylLib.Models.Node
     /// <summary>Represents the node</summary>
     public class Node
     {
-        /// <summary>The Object</summary>
-        [JsonProperty("object", Required = Required.Always)]
-        public string Object { get; set; }
-
         /// <summary>The nodes</summary>
         [JsonProperty("data", Required = Required.Always)]
         public NodeDatum[] Data { get; set; }

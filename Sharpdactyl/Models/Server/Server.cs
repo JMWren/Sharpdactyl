@@ -80,8 +80,6 @@ namespace SharpdactylLib.Models.Server
     /// <summary>Represents the databases datum</summary>
     public class DatabaseDatum
     {
-        /// <summary>Object</summary>
-        public string Object { get; set; }
         /// <summary>The data</summary>
         public DatabaseAttributes Attributes { get; set; }
     }
@@ -89,8 +87,6 @@ namespace SharpdactylLib.Models.Server
     /// <summary>Represents the databases</summary>
     public class Database
     {
-        /// <summary>Object</summary>
-        public string Object { get; set; }
         /// <summary>The data</summary>
         public List<DatabaseDatum> Data { get; set; }
     }
@@ -161,6 +157,9 @@ namespace SharpdactylLib.Models.Server
         /// <summary>The creation date</summary>
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
+        /// <summary>The server relationships</summary>
+        [JsonProperty("relationships")]
+        public Relationships Relationships { get; set; }
     }
 
     /// <summary>Represent the api return data</summary>
