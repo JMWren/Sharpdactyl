@@ -28,7 +28,7 @@ namespace SharpdactylLib.Models.User
 
         /// <summary>The external id</summary>
         [JsonProperty("external_id", Required = Required.AllowNull)]
-        public object ExternalId
+        public string ExternalId
         {
             get;
             set;
