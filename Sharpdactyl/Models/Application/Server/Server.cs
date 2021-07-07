@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace SharpdactylLib.Models.Server
+namespace SharpdactylLib.Models.Application.Server
 {
     /// <summary>Represents the hard limits for the server</summary>
     public class Limits

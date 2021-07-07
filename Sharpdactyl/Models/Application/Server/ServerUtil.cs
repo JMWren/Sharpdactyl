@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SharpdactylLib.Models.Server
+namespace SharpdactylLib.Models.Application.Server
 {
     /// <summary>Represents the memory</summary>
     public class Memory
