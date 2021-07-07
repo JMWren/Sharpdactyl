@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SharpdactylLib.Enums;
 using SharpdactylLib.Exceptions;
 using SharpdactylLib.Helpers;
-using SharpdactylLib.Models.Client;
+using SharpdactylLib.Models.Server;
 using SharpdactylLib.Models.Node;
 using SharpdactylLib.Models.User;
 
