@@ -21,7 +21,7 @@ namespace SharpdactylLib.Models.Application.Nodes.Allocations
     {
         /// <summary>The allocation id</summary>
         [JsonProperty("id", Required = Required.Always)]
-        public int Id { get; set; }
+        public long Id { get; set; }
         /// <summary>The allocation ip</summary>
         [JsonProperty("ip", Required = Required.Always)]
         public string Ip { get; set; }

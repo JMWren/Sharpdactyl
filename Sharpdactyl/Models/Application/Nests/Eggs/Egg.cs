@@ -20,7 +20,7 @@ namespace SharpdactylLib.Models.Application.Nests.Eggs
     { 
         /// <summary>The egg id</summary>
         [JsonProperty("id", Required = Required.Always)]
-        public int Id { get; set; }
+        public long Id { get; set; }
         /// <summary>The egg uuid</summary>
         [JsonProperty("uuid", Required = Required.Always)]
         public Guid Uuid { get; set; }

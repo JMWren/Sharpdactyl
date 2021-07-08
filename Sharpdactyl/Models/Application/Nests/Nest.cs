@@ -18,7 +18,7 @@ namespace SharpdactylLib.Models.Application.Nests
     {
         /// <summary>The nest id</summary>
         [JsonProperty("id", Required = Required.Always)]
-        public int Id { get; set; }
+        public long Id { get; set; }
         /// <summary>The nest uuid</summary>
         [JsonProperty("uuid", Required = Required.Always)]
         public Guid Uuid { get; set; }

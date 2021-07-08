@@ -20,7 +20,7 @@ namespace SharpdactylLib.Models.Application.Locations
     {
         /// <summary>The location id</summary>
         [JsonProperty("id", Required = Required.Always)]
-        public int Id { get; set; }
+        public long Id { get; set; }
         /// <summary>The location short string identifier</summary>
         [JsonProperty("short", Required = Required.AllowNull)]
         public string Short { get; set; }

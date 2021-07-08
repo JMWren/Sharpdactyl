@@ -73,7 +73,7 @@ namespace SharpdactylLib
         /// <param name="id"></param>
         /// <returns>the user</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<UserDatum> GetUserByExternalId(string id)
+        public async Task<UserDatum> GetUserByExternalId(string externalId)
         {
             if (_web == null)
             {
@@ -84,7 +84,7 @@ namespace SharpdactylLib
                 NullValueHandling = NullValueHandling.Ignore,
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
-            var result = await _web.Get($"application/users/external/{id}");
+            var result = await _web.Get($"application/users/external/{externalId}");
             return JsonConvert.DeserializeObject<UserDatum>(result, settings);
         }
 
@@ -127,7 +127,7 @@ namespace SharpdactylLib
         /// <param name="password">the password</param>
         /// <returns>The edited user</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<UserDatum> EditUser(string userId, string username, string email, string first, string last, string password)
+        public async Task<UserDatum> UpdateUser(long userId, string username, string email, string first, string last, string password)
         {
             if (_web == null)
             {
@@ -151,7 +151,7 @@ namespace SharpdactylLib
         /// <param name="userId">the userid</param>
         /// <returns></returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task DeleteUser(string userId)
+        public async Task DeleteUser(long userId)
         {
             if (_web == null)
             {
@@ -187,7 +187,7 @@ namespace SharpdactylLib
         /// <param name="id">the id</param>
         /// <returns>the server node</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<NodeDatum> GetNodeById(string id)
+        public async Task<NodeDatum> GetNodeById(long id)
         {
             if (_web == null)
             {
@@ -229,7 +229,7 @@ namespace SharpdactylLib
         /// <param name="id">the server id</param>
         /// <returns>the server</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<ServerDatum> GetServerById(string id)
+        public async Task<ServerDatum> GetServerById(long id)
         {
             if (_web == null)
             {
@@ -267,7 +267,7 @@ namespace SharpdactylLib
         /// <param name="id">the server id</param>
         /// <returns></returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task SuspendServerById(string id)
+        public async Task SuspendServerById(long id)
         {
             if (_web == null)
             {
@@ -282,7 +282,7 @@ namespace SharpdactylLib
         /// <param name="id">the server id</param>
         /// <returns></returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task UnSuspendServerById(string id)
+        public async Task UnSuspendServerById(long id)
         {
             if (_web == null)
             {
@@ -297,7 +297,7 @@ namespace SharpdactylLib
         /// <param name="id">the server id</param>
         /// <returns></returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task ReinstallServerById(string id)
+        public async Task ReinstallServerById(long id)
         {
             if (_web == null)
             {
@@ -313,7 +313,7 @@ namespace SharpdactylLib
         /// <param name="force">force remove</param>
         /// <returns></returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task DeleteServerById(string id, bool force)
+        public async Task DeleteServerById(long id, bool force)
         {
             if (_web == null)
             {
@@ -328,7 +328,7 @@ namespace SharpdactylLib
         /// <param name="id">the server</param>
         /// <returns></returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task Admin_DeleteServerById(string id)
+        public async Task Admin_DeleteServerById(long id)
         {
             await DeleteServerById(id, false).ConfigureAwait(false);
         }
