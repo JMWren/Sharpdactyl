@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using SharpdactylLib.Models.Application.Server;
 
 namespace SharpdactylLib.Models.Client.Server
 {
@@ -52,43 +53,6 @@ namespace SharpdactylLib.Models.Client.Server
         public bool Installed { get; set; }
         /// <summary>Environment settings</summary>
         public Dictionary<string,string> Environment { get; set; }
-    }
-
-    /// <summary>Represents the database attributes</summary>
-    public class DatabaseAttributes
-    {
-        /// <summary>The id</summary>
-        public long Id { get; set; }
-        /// <summary>The server</summary>
-        public int Server { get; set; }
-        /// <summary>The host</summary>
-        public int Host { get; set; }
-        /// <summary>The database</summary>
-        public string Database { get; set; }
-        /// <summary>The database username</summary>
-        public string Username { get; set; }
-        /// <summary>The remote</summary>
-        public string Remote { get; set; }
-        /// <summary>The max connections</summary>
-        public int MaxConnections { get; set; }
-        /// <summary>The creation date</summary>
-        public DateTimeOffset CreatedAt { get; set; }
-        /// <summary>The last updated date</summary>
-        public DateTimeOffset UpdatedAt { get; set; }
-    }
-
-    /// <summary>Represents the databases datum</summary>
-    public class DatabaseDatum
-    {
-        /// <summary>The data</summary>
-        public DatabaseAttributes Attributes { get; set; }
-    }
-
-    /// <summary>Represents the databases</summary>
-    public class Database
-    {
-        /// <summary>The data</summary>
-        public List<DatabaseDatum> Data { get; set; }
     }
 
     /// <summary>Represents the relationships</summary>
