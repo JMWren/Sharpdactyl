@@ -1,8 +1,16 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace SharpdactylLib.Models.Client.User
+namespace SharpdactylLib.Models.Application.Users
 {
+    /// <summary>Represent the user</summary>
+    public class User
+    {
+        /// <summary>Data</summary>
+        [JsonProperty("data", Required = Required.Always)]
+        public UserDatum[] Data { get; set; }
+    }
+
     /// <summary>Represents the user data</summary>
     public class UserDatum
     {

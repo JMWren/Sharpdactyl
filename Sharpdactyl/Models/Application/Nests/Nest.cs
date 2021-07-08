@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace SharpdactylLib.Models.Application.Nest
+namespace SharpdactylLib.Models.Application.Nests
 {
     /// <summary>Represents the installed nests on the panel</summary>
     public class Nest

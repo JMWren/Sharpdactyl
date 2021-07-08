@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SharpdactylLib.Models.Application.Node
+namespace SharpdactylLib.Models.Application.Nodes.Allocations
 {
     /// <summary>The allocation on the node</summary>
     public class Allocation

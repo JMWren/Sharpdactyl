@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace SharpdactylLib.Models.Application.Nest.Egg
+namespace SharpdactylLib.Models.Application.Nests.Eggs
 {
     /// <summary>Represents the eggs installed inside a nest</summary>
     public class Egg

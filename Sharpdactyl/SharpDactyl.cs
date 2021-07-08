@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using SharpdactylLib.Enums;
 using SharpdactylLib.Exceptions;
 using SharpdactylLib.Helpers;
-using SharpdactylLib.Models.Client.Server;
-using SharpdactylLib.Models.Client.Node;
-using SharpdactylLib.Models.Client.User;
+using SharpdactylLib.Models.Application.Servers;
+using SharpdactylLib.Models.Application.Nodes;
+using SharpdactylLib.Models.Application.Users;
 
 namespace SharpdactylLib
 {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace SharpdactylLib.Models.Application.Location
+namespace SharpdactylLib.Models.Application.Locations
 {
     /// <summary>Location data about the host panel</summary>
     public class Location

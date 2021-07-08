@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SharpdactylLib.Models.Client.Server;
+using SharpdactylLib.Models.Application.Servers;
 
 namespace SharpDactyl.Cons
 {

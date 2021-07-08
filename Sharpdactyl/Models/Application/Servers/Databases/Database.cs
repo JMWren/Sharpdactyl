@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-
-namespace SharpdactylLib.Models.Application.Server
+namespace SharpdactylLib.Models.Application.Servers.Databases
 {
     /// <summary>Represents the databases</summary>
     public class Database
