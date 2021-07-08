@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SharpdactylLib.Models.Application.User
+namespace SharpdactylLib.Models.Client.User
 {
     /// <summary>Represent the user</summary>
     public class User

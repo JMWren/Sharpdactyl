@@ -4,10 +4,10 @@
     <PackageId>SharpDactyl</PackageId>
     <Title>SharpDactyl</Title>
     <Authors>JMWren</Authors>
-    <Version>0.0.2-alpha</Version>
+    <Version>1.0.2</Version>
     <PackageTags>Library</PackageTags>
     <Description>API library for the Pterodactyl game panel</Description>
-    <PackageTags>API;Library; Pterodactyl Game Panel;</PackageTags>
+    <PackageTags>API;Library; Pterodactyl Game Panel; Ptero;</PackageTags>
     <PackageReleaseNotes>Version 0.0.2-alpha</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/JayJay1989/Sharpdactyl</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

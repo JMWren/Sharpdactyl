@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace SharpdactylLib.Models.Application.Server
+namespace SharpdactylLib.Models.Client.Server
 {
     /// <summary>Represents the hard limits for the server</summary>
     public class Limits
@@ -148,9 +148,6 @@ namespace SharpdactylLib.Models.Application.Server
         /// <summary>The docker container info</summary>
         [JsonProperty("container")]
         public Container Container { get; set; }
-        /// <summary>The environment settings</summary>
-        [JsonProperty("environment")]
-        public Dictionary<string, string> Environment { get; set; }
         /// <summary>The last updated date</summary>
         [JsonProperty("updated_at")]
         public DateTimeOffset UpdatedAt { get; set; }

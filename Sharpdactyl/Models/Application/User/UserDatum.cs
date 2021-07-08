@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace SharpdactylLib.Models.Application.User
+namespace SharpdactylLib.Models.Client.User
 {
     /// <summary>Represents the user data</summary>
     public class UserDatum
