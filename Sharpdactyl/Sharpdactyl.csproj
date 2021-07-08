@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>SharpDactyl</PackageId>
     <Title>SharpDactyl</Title>
-    <Authors>JayJay1989BE</Authors>
+    <Authors>JMWren</Authors>
     <Version>0.0.2-alpha</Version>
     <PackageTags>Library</PackageTags>
     <Description>API library for the Pterodactyl game panel</Description>
@@ -14,7 +14,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/JayJay1989/Sharpdactyl</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Everneth/Sharpdactyl</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>SharpdactylLib</AssemblyName>
     <RootNamespace>SharpdactylLib</RootNamespace>
@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Flurl" Version="3.0.0-pre4" />
-    <PackageReference Include="Flurl.Http" Version="3.0.0-pre4" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Flurl" Version="3.0.2" />
+    <PackageReference Include="Flurl.Http" Version="3.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 </Project>
