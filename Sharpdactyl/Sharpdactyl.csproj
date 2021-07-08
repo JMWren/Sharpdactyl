@@ -9,12 +9,12 @@
     <Description>API library for the Pterodactyl game panel</Description>
     <PackageTags>API;Library; Pterodactyl Game Panel; Ptero;</PackageTags>
     <PackageReleaseNotes>Version 0.0.2-alpha</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/JayJay1989/Sharpdactyl</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/JMWren/Sharpdactyl</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Everneth/Sharpdactyl</RepositoryUrl>
+    <RepositoryUrl>https://github.com/JMWren/Sharpdactyl</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>SharpdactylLib</AssemblyName>
     <RootNamespace>SharpdactylLib</RootNamespace>
