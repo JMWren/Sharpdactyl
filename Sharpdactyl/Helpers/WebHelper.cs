@@ -1,7 +1,11 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
+using Newtonsoft.Json;
+using SharpdactylLib.Models.Application.Servers;
 
 namespace SharpdactylLib.Helpers
 {
@@ -33,7 +37,7 @@ namespace SharpdactylLib.Helpers
         {
             Url url = new Url(_hostname + $"/api/{query}");
             await url
-                .WithHeader("Accept","Application/vnd.pterodactyl.v1+json")
+                .WithHeader("Accept","application/json")
                 .WithHeader("Content-type","application/json")
                 .WithOAuthBearerToken(_apiKey)
                 .DeleteAsync();
@@ -45,11 +49,11 @@ namespace SharpdactylLib.Helpers
         /// <param name="query">the query</param>
         /// <param name="data">the data</param>
         /// <returns>the result of the instruction</returns>
-        public async Task<string> Patch(string query, NameValueCollection data)
+        public async Task<string> Patch(string query, object data)
         {
             Url url = new Url(_hostname + $"/api/{query}");
             var result = await url
-                .WithHeader("Accept", "Application/vnd.pterodactyl.v1+json")
+                .WithHeader("Accept", "application/json")
                 .WithHeader("Content-type", "application/json")
                 .WithOAuthBearerToken(_apiKey)
                 .PatchJsonAsync(data)
@@ -64,11 +68,11 @@ namespace SharpdactylLib.Helpers
         /// <param name="query">the query</param>
         /// <param name="data">the data</param>
         /// <returns>the result of the instruction</returns>
-        public async Task<string> Post(string query, NameValueCollection data)
+        public async Task<string> Post(string query, object data)
         {
             Url url = new Url(_hostname + $"/api/{query}");
             var result = await url
-                .WithHeader("Accept", "Application/vnd.pterodactyl.v1+json")
+                .WithHeader("Accept", "application/json")
                 .WithHeader("Content-type", "application/json")
                 .WithOAuthBearerToken(_apiKey)
                 .PostJsonAsync(data)
@@ -87,7 +91,7 @@ namespace SharpdactylLib.Helpers
         {
             Url url = new Url(_hostname + $"/api/{query}");
             var result = await url
-                .WithHeader("Accept", "Application/vnd.pterodactyl.v1+json")
+                .WithHeader("Accept", "application/json")
                 .WithHeader("Content-type", "application/json")
                 .WithOAuthBearerToken(_apiKey)
                 .PostJsonAsync(json)
@@ -105,7 +109,7 @@ namespace SharpdactylLib.Helpers
         {
             Url url = new Url(_hostname + $"/api/{query}");
             var result = await url
-                .WithHeader("Accept", "Application/vnd.pterodactyl.v1+json")
+                .WithHeader("Accept", "application/json")
                 .WithHeader("Content-type", "application/json")
                 .WithOAuthBearerToken(_apiKey)
                 .GetAsync()
