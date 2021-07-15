@@ -175,7 +175,7 @@ namespace SharpdactylLib
         /// </summary>
         /// <returns>A list of nodes</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<List<NodeDatum>> GetNodes()
+        public async Task<List<NodeContainer>> GetNodes()
         {
             if (_web == null)
             {
@@ -183,7 +183,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get("application/nodes");
-            var model = JsonConvert.DeserializeObject<Node>(result, settings);
+            var model = JsonConvert.DeserializeObject<NodeContainerResult>(result, settings);
             return model.Data.ToList();
         }
 
@@ -193,7 +193,7 @@ namespace SharpdactylLib
         /// <param name="id">the id</param>
         /// <returns>the server node</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<NodeDatum> GetNode(long id)
+        public async Task<NodeContainer> GetNode(long id)
         {
             if (_web == null)
             {
@@ -201,7 +201,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get($"application/nodes/{id}");
-            return JsonConvert.DeserializeObject<NodeDatum>(result, settings);
+            return JsonConvert.DeserializeObject<NodeContainer>(result, settings);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace SharpdactylLib
         /// <param name="id">the id</param>
         /// <returns>The server node</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<NodeDatum> CreateNode(string name, long locationId, string fqdn, string scheme, int memoryMB,
+        public async Task<NodeContainer> CreateNode(string name, long locationId, string fqdn, string scheme, int memoryMB,
             int memoryOverallocate, int diskMB, int diskOverallocate, int maxUploadMB, int daemonSFTP, int daemonListen)
         {
             if (_web == null)
@@ -233,7 +233,7 @@ namespace SharpdactylLib
                 daemon_listen = daemonListen
             };
             var result = await _web.Post("application/nodes", body);
-            return JsonConvert.DeserializeObject<NodeDatum>(result, settings);
+            return JsonConvert.DeserializeObject<NodeContainer>(result, settings);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace SharpdactylLib
         /// <param name="daemonSFTP"></param>
         /// <param name="daemonListen"></param>
         /// <returns></returns>
-        public async Task<NodeDatum> UpdateNode(long nodeId, string name, string description, long locationId, string fqdn, string scheme,
+        public async Task<NodeContainer> UpdateNode(long nodeId, string name, string description, long locationId, string fqdn, string scheme,
             bool behindProxy, bool maintenanceMode, int memoryMB, int memoryOverallocate, int diskMB, int diskOverallocate, int maxUploadMB,
             int daemonSFTP, int daemonListen)
         {
@@ -282,7 +282,7 @@ namespace SharpdactylLib
                 daemon_listen = daemonListen
             };
             var result = await _web.Patch($"application/nodes/{nodeId}", body);
-            return JsonConvert.DeserializeObject<NodeDatum>(result, settings);
+            return JsonConvert.DeserializeObject<NodeContainer>(result, settings);
         }
 
         /// <summary>

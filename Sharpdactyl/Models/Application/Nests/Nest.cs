@@ -5,7 +5,7 @@ namespace SharpdactylLib.Models.Application.Nests
 {
     /// <summary>
     /// Represents the full results of an application nest http request
-    /// summary>
+    /// </summary>
     public class NestContainerResult
     {
         /// <summary>Nest request data</summary>
