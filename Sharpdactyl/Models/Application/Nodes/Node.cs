@@ -3,7 +3,9 @@ using System;
 
 namespace SharpdactylLib.Models.Application.Nodes
 {
-    /// <summary>Represents the node</summary>
+    /// <summary>
+    /// Represents the node
+    /// </summary>
     public class Node
     {
         /// <summary>The nodes</summary>
@@ -11,7 +13,9 @@ namespace SharpdactylLib.Models.Application.Nodes
         public NodeDatum[] Data { get; set; }
     }
 
-    /// <summary>Represents the node Data</summary>
+    /// <summary>
+    /// Represents the node Data
+    /// </summary>
     public class NodeDatum
     {
         /// <summary>The attributes</summary>
@@ -19,7 +23,9 @@ namespace SharpdactylLib.Models.Application.Nodes
         public Attributes Attributes { get; set; }
     }
 
-    /// <summary>Represents the attributes</summary>
+    /// <summary>
+    /// Represents the attributes
+    /// </summary>
     public class Attributes
     {
         /// <summary>The id</summary>
@@ -39,7 +45,7 @@ namespace SharpdactylLib.Models.Application.Nodes
         public string Name { get; set; }
 
         /// <summary>The description</summary>
-        [JsonProperty("description", Required = Required.Always)]
+        [JsonProperty("description", Required = Required.AllowNull)]
         public string Description { get; set; }
 
         /// <summary>The location id</summary>
@@ -58,7 +64,7 @@ namespace SharpdactylLib.Models.Application.Nodes
         [JsonProperty("behind_proxy", Required = Required.Always)]
         public bool BehindProxy { get; set; }
 
-        /// <summary>The maintenance mode</summary>
+        /// <summary>Whether server is in maintenance mode</summary>
         [JsonProperty("maintenance_mode", Required = Required.Always)]
         public bool MaintenanceMode { get; set; }
 

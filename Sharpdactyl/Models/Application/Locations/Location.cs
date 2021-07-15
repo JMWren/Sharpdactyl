@@ -3,7 +3,9 @@ using System;
 
 namespace SharpdactylLib.Models.Application.Locations
 {
-    /// <summary>Location data about the host panel</summary>
+    /// <summary>
+    /// Location data about the host panel
+    /// </summary>
     public class Location
     {
         public LocationDatum[] Data { get; set; }

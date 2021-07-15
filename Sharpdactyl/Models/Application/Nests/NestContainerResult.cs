@@ -3,18 +3,28 @@ using System;
 
 namespace SharpdactylLib.Models.Application.Nests
 {
-    /// <summary>Represents the installed nests on the panel</summary>
+    /// <summary>
+    /// Represents the full results of an application nest http request
+    /// summary>
+    public class NestContainerResult
+    {
+        /// <summary>Nest request data</summary>
+        public NestContainer[] Data { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the data inside the application nest http request
+    /// </summary>
+    public class NestContainer
+    {
+        /// <summary>Nest attributes</summary>
+        public Nest Attributes { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the nest attributes
+    /// </summary>
     public class Nest
-    {
-        public NestDatum[] Data { get; set; }
-    }
-
-    public class NestDatum
-    {
-        public Attributes Attributes { get; set; }
-    }
-
-    public class Attributes
     {
         /// <summary>The nest id</summary>
         [JsonProperty("id", Required = Required.Always)]

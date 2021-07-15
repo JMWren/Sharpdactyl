@@ -3,20 +3,28 @@ using System;
 
 namespace SharpdactylLib.Models.Application.Nests.Eggs
 {
-    /// <summary>Represents the eggs installed inside a nest</summary>
-    public class Egg
+    /// <summary>
+    /// Represents the eggs installed inside a nest
+    /// </summary>
+    public class EggContainerResult
     {
-        public EggDatum[] Data { get; set; }
+        /// <summary>Egg request data</summary>
+        public EggContainer[] Data { get; set; }
     }
 
-    /// <summary>The egg data</summary>
-    public class EggDatum
+    /// <summary>
+    /// Represents all the data inside an egg http request
+    /// </summary>
+    public class EggContainer
     { 
-        public Attributes Attributes { get; set; }
+        /// <summary>Egg attributes</summary>
+        public Egg Attributes { get; set; }
     }
 
-    /// <summary>The egg attributes</summary>
-    public class Attributes
+    /// <summary>
+    /// Represents all the attributes of an egg
+    /// </summary>
+    public class Egg
     { 
         /// <summary>The egg id</summary>
         [JsonProperty("id", Required = Required.Always)]
