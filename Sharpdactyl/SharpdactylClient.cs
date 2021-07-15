@@ -29,6 +29,13 @@ namespace SharpdactylLib
             _web = new WebHelper(hostname, clientKey);
         }
 
+        public async Task SendCommand(string identifier, string command)
+        {
+            var data = new Dictionary<string, string>();
+            data.Add("command", command);
+            await _web.Post($"client/servers/{identifier}/command", data);
+        }
+
         /// <summary>
         /// Get all servers
         /// </summary>
@@ -36,7 +43,7 @@ namespace SharpdactylLib
         /// <exception cref="MissingCredentialsException"></exception>
         ///
 
-        public async Task<List<ServerDatum>> GetServers()
+        public async Task<List<ApplicationServerContainer>> GetServers()
         {
 
             if (_web == null)
@@ -49,8 +56,7 @@ namespace SharpdactylLib
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
             var result = await _web.Get("client");
-            var model = JsonConvert.DeserializeObject<Server>(result, settings);
-            return model.Data.ToList();
+            return JsonConvert.DeserializeObject<List<ApplicationServerContainer>>(result, settings);
         }
 
         /// <summary>
@@ -59,7 +65,7 @@ namespace SharpdactylLib
         /// <param name="id">the server id</param>
         /// <returns>the server</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<ServerDatum> GetServerById(string id)
+        public async Task<ApplicationServerContainer> GetServerById(string id)
         {
             if (_web == null)
             {
@@ -71,7 +77,7 @@ namespace SharpdactylLib
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
             var result = await _web.Get($"client/servers/{id}");
-            return JsonConvert.DeserializeObject<ServerDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationServerContainer>(result, settings);
         }
 
         /// <summary>
@@ -102,7 +108,7 @@ namespace SharpdactylLib
         /// <param name="signal">the signal</param>
         /// <returns>the result of the command</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<bool> SendSignal(string serverId, PowerSettings signal)
+        /*public async Task<bool> SendSignal(string serverId, PowerSettings signal)
         {
             if (_web == null)
             {
@@ -111,7 +117,7 @@ namespace SharpdactylLib
             var data = new NameValueCollection { ["signal"] = signal.ToString() };
             var result = await _web.Post($"client/servers/{serverId}/power", data);
             return string.IsNullOrEmpty(result);
-        }
+        }*/
 
         /// <summary>
         /// Send a console command to the server
@@ -120,7 +126,7 @@ namespace SharpdactylLib
         /// <param name="command">the command to send</param>
         /// <returns>the result of the command</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<bool> PostConsoleCommand(string serverId, string command)
+        /*public async Task<bool> PostConsoleCommand(string serverId, string command)
         {
             if (_web == null)
             {
@@ -129,6 +135,6 @@ namespace SharpdactylLib
             var data = new NameValueCollection { ["command"] = command };
             var result = await _web.Post($"client/servers/{serverId}/command", data);
             return string.IsNullOrEmpty(result);
-        }
+        }*/
     }
 }

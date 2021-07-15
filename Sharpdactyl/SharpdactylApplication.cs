@@ -8,7 +8,6 @@ using SharpdactylLib.Models.Application.Nests.Eggs;
 using SharpdactylLib.Models.Application.Nodes;
 using SharpdactylLib.Models.Application.Nodes.Allocations;
 using SharpdactylLib.Models.Application.Servers;
-using SharpdactylLib.Models.Application.Servers.Databases;
 using SharpdactylLib.Models.Application.Users;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,7 @@ namespace SharpdactylLib
         /// </summary>
         /// <returns>A list of users</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<List<UserDatum>> GetUsers()
+        public async Task<List<ApplicationUserContainer>> GetUsers()
         {
             if (_web == null)
             {
@@ -53,7 +52,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get("application/users");
-            var model = JsonConvert.DeserializeObject<User>(result, settings);
+            var model = JsonConvert.DeserializeObject<ApplicationUserContainerResult>(result, settings);
             return model.Data.ToList();
         }
 
@@ -63,7 +62,7 @@ namespace SharpdactylLib
         /// <param name="id"></param>
         /// <returns>The user</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<UserDatum> GetUser(long id)
+        public async Task<ApplicationUserContainer> GetUser(long id)
         {
             if (_web == null)
             {
@@ -71,7 +70,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get($"application/users/{id}");
-            return JsonConvert.DeserializeObject<UserDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationUserContainer>(result, settings);
         }
 
         /// <summary>
@@ -80,7 +79,7 @@ namespace SharpdactylLib
         /// <param name="id"></param>
         /// <returns>the user</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<UserDatum> GetUser(string externalId)
+        public async Task<ApplicationUserContainer> GetUser(string externalId)
         {
             if (_web == null)
             {
@@ -88,7 +87,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get($"application/users/external/{externalId}");
-            return JsonConvert.DeserializeObject<UserDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationUserContainer>(result, settings);
         }
 
         /// <summary>
@@ -101,7 +100,7 @@ namespace SharpdactylLib
         /// <param name="password">the password</param>
         /// <returns>the created user</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<UserDatum> CreateUser(string email, string username, string firstName, string lastName, string password = "")
+        public async Task<ApplicationUserContainer> CreateUser(string email, string username, string firstName, string lastName, string password = "")
         {
             if (_web == null)
             {
@@ -117,7 +116,7 @@ namespace SharpdactylLib
             };
 
             var result = await _web.Post("application/users", data);
-            return JsonConvert.DeserializeObject<UserDatum>(result);
+            return JsonConvert.DeserializeObject<ApplicationUserContainer>(result);
         }
 
         /// <summary>
@@ -131,7 +130,7 @@ namespace SharpdactylLib
         /// <param name="password">the password</param>
         /// <returns>The edited user</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<UserDatum> UpdateUser(long userId, string username, string email,
+        public async Task<ApplicationUserContainer> UpdateUser(long userId, string username, string email,
             string first_name, string last_name, string language = "en", bool root_admin = false, string password = null)
         {
             if (_web == null)
@@ -151,7 +150,7 @@ namespace SharpdactylLib
 
 
             var result = await _web.Patch($"application/users/{userId}", data);
-            return JsonConvert.DeserializeObject<UserDatum>(result);
+            return JsonConvert.DeserializeObject<ApplicationUserContainer>(result);
         }
 
         /// <summary>
@@ -304,14 +303,14 @@ namespace SharpdactylLib
         /// </summary>
         /// <param name="nodeId"></param>
         /// <returns>The list of allocations</returns>
-        public async Task<List<AllocationDatum>> GetAllocations(long nodeId)
+        public async Task<List<ApplicationAllocationContainer>> GetAllocations(long nodeId)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/nodes/{nodeId}/allocations");
-            var model = JsonConvert.DeserializeObject<Allocation>(result, settings);
+            var model = JsonConvert.DeserializeObject<ApplicationAllocationContainerResults>(result, settings);
             return model.Data.ToList();
         }
 
@@ -322,7 +321,7 @@ namespace SharpdactylLib
         /// <param name="ip"></param>
         /// <param name="ports"></param>
         /// <returns>The created allocation</returns>
-        public async Task<AllocationDatum> CreateAllocation(long nodeId, string ip, string[] ports)
+        public async Task<ApplicationAllocationContainer> CreateAllocation(long nodeId, string ip, string[] ports)
         {
             if (_web == null)
             {
@@ -335,7 +334,7 @@ namespace SharpdactylLib
                 ports
             };
             var result = await _web.Post($"application/nodes/{nodeId}/allocations", body);
-            return JsonConvert.DeserializeObject<AllocationDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationAllocationContainer>(result, settings);
         }
 
         public async Task DeleteAllocation(long nodeId, long allocationId)
@@ -441,14 +440,14 @@ namespace SharpdactylLib
         /// </summary>
         /// <returns>A list of all servers</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<List<ServerDatum>> GetServers()
+        public async Task<List<ApplicationServerContainer>> GetServers()
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get("application/servers");
-            var model = JsonConvert.DeserializeObject<Server>(result, settings);
+            var model = JsonConvert.DeserializeObject<ApplicationServerContainerResult>(result, settings);
             return model.Data.ToList();
         }
 
@@ -458,14 +457,14 @@ namespace SharpdactylLib
         /// <param name="id">the server id</param>
         /// <returns>The server</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<ServerDatum> GetServer(long id)
+        public async Task<ApplicationServerContainer> GetServer(long id)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/servers/{id}");
-            return JsonConvert.DeserializeObject<ServerDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationServerContainer>(result, settings);
         }
 
         /// <summary>
@@ -474,14 +473,14 @@ namespace SharpdactylLib
         /// <param name="externalId">the external server id</param>
         /// <returns>The server</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<ServerDatum> GetServer(string externalId)
+        public async Task<ApplicationServerContainer> GetServer(string externalId)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/servers/external/{externalId}");
-            return JsonConvert.DeserializeObject<ServerDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationServerContainer>(result, settings);
         }
 
         /// <summary>
@@ -492,7 +491,7 @@ namespace SharpdactylLib
         /// </summary>
         /// <returns>The created server</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<ServerDatum> CreateServer(string name, long ownerId, string dockerImage,
+        public async Task<ApplicationServerContainer> CreateServer(string name, long ownerId, string dockerImage,
             string startupCommand, int ipAllocationId, int eggId, Dictionary<string, string> environmentVariables)
         {
             if (_web == null)
@@ -513,14 +512,14 @@ namespace SharpdactylLib
                 allocation = new { @default = ipAllocationId }
             };
             var result = await _web.Post("application/servers", body);
-            return JsonConvert.DeserializeObject<ServerDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationServerContainer>(result, settings);
         }
 
         /// <summary>
         /// Updates the details of a server
         /// </summary>
         /// <returns>The updated server</returns>
-        public async Task<ServerDatum> UpdateServerDetails(long id, string name, long userId, string externalId = null,
+        public async Task<ApplicationServerContainer> UpdateServerDetails(long id, string name, long userId, string externalId = null,
             string description = null)
         {
             if (_web == null)
@@ -536,7 +535,7 @@ namespace SharpdactylLib
                 description
             };
             var result = await _web.Patch($"application/servers/{id}/details", body);
-            return JsonConvert.DeserializeObject<ServerDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationServerContainer>(result, settings);
         }
 
         /// <summary>
@@ -544,7 +543,7 @@ namespace SharpdactylLib
         /// </summary>
         /// <returns>The updated server</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<ServerDatum> UpdateServerBuild(long id, int ipAllocationId, int memoryMB = 1024, int swapMB = 0,
+        public async Task<ApplicationServerContainer> UpdateServerBuild(long id, int ipAllocationId, int memoryMB = 1024, int swapMB = 0,
             int diskMB = 1024, int ioProportion = 500, int cpuPercent = 0, int? thread = null, int databaseLimit = 0,
             int allocationLimit = 0, int backupLimit = 0)
         {
@@ -565,14 +564,14 @@ namespace SharpdactylLib
                 feature_limits = new { databases = databaseLimit, allocations = allocationLimit, backups = backupLimit }
             };
             var result = await _web.Patch($"application/servers/{id}/build", body);
-            return JsonConvert.DeserializeObject<ServerDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationServerContainer>(result, settings);
         }
 
         /// <summary>
         /// Updates the server startup parameters 
         /// </summary>
         /// <returns>The updated server</returns>
-        public async Task<ServerDatum> UpdateServerStartup(long id, string startupCommand, string dockerImage,
+        public async Task<ApplicationServerContainer> UpdateServerStartup(long id, string startupCommand, string dockerImage,
             long eggId, Dictionary<string, string> environmentVariables, bool skipScripts = false)
         {
             if (_web == null)
@@ -589,7 +588,7 @@ namespace SharpdactylLib
                 skip_scripts = skipScripts
             };
             var result = await _web.Patch($"application/servers/{id}/startup", body);
-            return JsonConvert.DeserializeObject<ServerDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationServerContainer>(result, settings);
         }
 
         /// <summary>
@@ -656,14 +655,14 @@ namespace SharpdactylLib
         /// <param name="serverId"></param>
         /// <returns>All databases belonging to the server</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<List<DatabaseDatum>> GetDatabases(long serverId)
+        public async Task<List<ApplicationDatabaseContainer>> GetDatabases(long serverId)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/servers/{serverId}/databases");
-            var model = JsonConvert.DeserializeObject<Database>(result, settings);
+            var model = JsonConvert.DeserializeObject<ApplicationDatabaseContainerResult>(result, settings);
             return model.Data.ToList();
         }
 
@@ -674,14 +673,14 @@ namespace SharpdactylLib
         /// <param name="databaseId"></param>
         /// <returns>The database</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<DatabaseDatum> GetDatabase(long serverId, long databaseId)
+        public async Task<ApplicationDatabaseContainer> GetDatabase(long serverId, long databaseId)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/servers/{serverId}/databases/{databaseId}");
-            return JsonConvert.DeserializeObject<DatabaseDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationDatabaseContainer>(result, settings);
         }
 
         /// <summary>
@@ -693,7 +692,7 @@ namespace SharpdactylLib
         /// <param name="remote"></param>
         /// <returns>The created database</returns>
         /// <exception cref="MissingCredentialsException"></exception>
-        public async Task<DatabaseDatum> CreateDatabase(long serverId, string name, long hostId, string remote = "%")
+        public async Task<ApplicationDatabaseContainer> CreateDatabase(long serverId, string name, long hostId, string remote = "%")
         {
             if (_web == null)
             {
@@ -707,7 +706,7 @@ namespace SharpdactylLib
                 host = hostId
             };
             var result = await _web.Post($"application/servers/{serverId}/databases", body);
-            return JsonConvert.DeserializeObject<DatabaseDatum>(result, settings);
+            return JsonConvert.DeserializeObject<ApplicationDatabaseContainer>(result, settings);
         }
 
         /// <summary>
@@ -746,7 +745,7 @@ namespace SharpdactylLib
         /// Gets a list of all nests 
         /// </summary>
         /// <returns>The list of nests</returns>
-        public async Task<List<NestDatum>> GetNests()
+        public async Task<List<NestContainer>> GetNests()
         {
             if (_web == null)
             {
@@ -754,7 +753,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get("application/nests");
-            var model = JsonConvert.DeserializeObject<Nest>(result, settings);
+            var model = JsonConvert.DeserializeObject<NestContainerResult>(result, settings);
             return model.Data.ToList();
         }
 
@@ -763,14 +762,14 @@ namespace SharpdactylLib
         /// </summary>
         /// <param name="nestId"></param>
         /// <returns>The nest</returns>
-        public async Task<NestDatum> GetNest(long nestId)
+        public async Task<NestContainer> GetNest(long nestId)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/nests/{nestId}");
-            return JsonConvert.DeserializeObject<NestDatum>(result, settings);
+            return JsonConvert.DeserializeObject<NestContainer>(result, settings);
         }
 
         /// <summary>
@@ -778,7 +777,7 @@ namespace SharpdactylLib
         /// </summary>
         /// <param name="nestId"></param>
         /// <returns>The list of eggs</returns>
-        public async Task<List<EggDatum>> GetEggs(long nestId)
+        public async Task<List<EggContainer>> GetEggs(long nestId)
         {
             if (_web == null)
             {
@@ -786,7 +785,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get($"application/nests/{nestId}/eggs");
-            var model = JsonConvert.DeserializeObject<Egg>(result, settings);
+            var model = JsonConvert.DeserializeObject<EggContainerResult>(result, settings);
             return model.Data.ToList();
         }
 
@@ -796,14 +795,14 @@ namespace SharpdactylLib
         /// <param name="nestId"></param>
         /// <param name="eggId"></param>
         /// <returns>The egg</returns>
-        public async Task<EggDatum> GetEgg(long nestId, long eggId)
+        public async Task<EggContainer> GetEgg(long nestId, long eggId)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/nests/{nestId}/eggs/{eggId}");
-            return JsonConvert.DeserializeObject<EggDatum>(result, settings);
+            return JsonConvert.DeserializeObject<EggContainer>(result, settings);
         }
         #endregion
     }
