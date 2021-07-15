@@ -4,21 +4,29 @@ using System;
 namespace SharpdactylLib.Models.Application.Locations
 {
     /// <summary>
-    /// Location data about the host panel
+    /// Represents the full results of a location http request
+    /// </summary>
+    public class LocationContainerResult
+    {
+        /// <summary>The location data return</summary>
+        [JsonProperty("data")]
+        public LocationContainer[] Data { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the data inside of a location http request
+    /// </summary>
+    public class LocationContainer
+    {
+        /// <summary>The location attributes</summary>
+        [JsonProperty("attributes")]
+        public Location Attributes { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the attributes of a location
     /// </summary>
     public class Location
-    {
-        public LocationDatum[] Data { get; set; }
-    }
-
-    /// <summary>The location data</summary>
-    public class LocationDatum
-    {
-        public Attributes Attributes { get; set; }
-    }
-
-    /// <summary>The location attributes</summary>
-    public class Attributes
     {
         /// <summary>The location id</summary>
         [JsonProperty("id", Required = Required.Always)]

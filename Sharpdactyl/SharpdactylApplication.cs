@@ -352,7 +352,7 @@ namespace SharpdactylLib
         /// Get all locations on the panel
         /// </summary>
         /// <returns>The list of locations</returns>
-        public async Task<List<LocationDatum>> GetLocations()
+        public async Task<List<LocationContainer>> GetLocations()
         {
             if (_web == null)
             {
@@ -360,7 +360,7 @@ namespace SharpdactylLib
             }
 
             var result = await _web.Get("application/locations");
-            var model = JsonConvert.DeserializeObject<Location>(result, settings);
+            var model = JsonConvert.DeserializeObject<LocationContainerResult>(result, settings);
             return model.Data.ToList();
         }
 
@@ -369,14 +369,14 @@ namespace SharpdactylLib
         /// </summary>
         /// <param name="id"></param>
         /// <returns>The location</returns>
-        public async Task<LocationDatum> GetLocation(long id)
+        public async Task<LocationContainer> GetLocation(long id)
         {
             if (_web == null)
             {
                 throw new MissingCredentialsException(MissingCredentials);
             }
             var result = await _web.Get($"application/locations/{id}");
-            return JsonConvert.DeserializeObject<LocationDatum>(result, settings);
+            return JsonConvert.DeserializeObject<LocationContainer>(result, settings);
         }
 
         /// <summary>
@@ -385,7 +385,7 @@ namespace SharpdactylLib
         /// <param name="identifier"></param>
         /// <param name="description"></param>
         /// <returns>The created location</returns>
-        public async Task<LocationDatum> CreateLocation(string identifier, string description)
+        public async Task<LocationContainer> CreateLocation(string identifier, string description)
         {
             if (_web == null)
             {
@@ -398,7 +398,7 @@ namespace SharpdactylLib
                 @long = description
             };
             var result = await _web.Post("application/locations", body);
-            return JsonConvert.DeserializeObject<LocationDatum>(result, settings);
+            return JsonConvert.DeserializeObject<LocationContainer>(result, settings);
         }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace SharpdactylLib
         /// <param name="identifier"></param>
         /// <param name="description"></param>
         /// <returns>The updated location</returns>
-        public async Task<LocationDatum> UpdateLocation(long locationId, string identifier, string description)
+        public async Task<LocationContainer> UpdateLocation(long locationId, string identifier, string description)
         {
             if (_web == null)
             {
@@ -421,7 +421,7 @@ namespace SharpdactylLib
                 @long = description
             };
             var result = await _web.Patch($"application/locations/{locationId}", body);
-            return JsonConvert.DeserializeObject<LocationDatum>(result, settings);
+            return JsonConvert.DeserializeObject<LocationContainer>(result, settings);
         }
 
         public async Task DeleteLocation(long locationId)
